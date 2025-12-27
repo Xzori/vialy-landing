@@ -6,20 +6,37 @@ import logoVialy from "figma:asset/9ef533a049266054c006b97c7fbeb9dba0ba9d7c.png"
 
 export function CTAFooter() {
   const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [resetTimer, setResetTimer] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      // TODO: Implement actual email list submission
-      console.log("Email submitted:", email);
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setEmail("");
-        setIsSubmitted(false);
-      }, 5000);
-    }
-  };
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!email) return;
+   if (resetTimer) {
+     window.clearTimeout(resetTimer);
+      setResetTimer(null);
+   }
+
+  setStatus("loading");
+
+  try {
+    const r = await fetch("/api/waitlist", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!r.ok) throw new Error();
+
+    setStatus("success");
+    setEmail("");
+
+    const t = window.setTimeout(() => setStatus("idle"), 5000);
+    setResetTimer(t);
+  } catch {
+    setStatus("error");
+  }
+};
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -58,25 +75,36 @@ export function CTAFooter() {
               Inscris-toi à la liste d'attente et sois averti(e) dès le lancement de Vialy. Accès anticipé garanti pour les premiers inscrits !
             </p>
             
-            {!isSubmitted ? (
+            {status !== "success" ? (
               <form onSubmit={handleSubmit} className="max-w-md mx-auto pt-4">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Input
                     type="email"
                     placeholder="ton.email@exemple.com"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (status === "error") setStatus("idle");
+                    }}
                     required
+                    disabled={status === "loading"}
                     className="flex-1 px-6 py-6 rounded-2xl bg-white/95 border-0 text-gray-900 placeholder:text-gray-500"
                   />
-                  <Button 
-                    type="submit"
-                    className="bg-white hover:bg-white/90 text-[#F37466] px-8 py-6 rounded-2xl whitespace-nowrap"
-                  >
-                    <Mail className="mr-2 h-5 w-5" />
-                    Rejoindre la liste
-                  </Button>
+                 <Button
+                   type="submit"
+                   disabled={status === "loading"}
+                   className="bg-white hover:bg-white/90 text-[#F37466] px-8 py-6 rounded-2xl whitespace-nowrap"
+                >
+                   <Mail className="mr-2 h-5 w-5" />
+                   {status === "loading" ? "..." : "Rejoindre la liste"}
+                 </Button>
                 </div>
+
+                {status === "error" ? (
+                <p className="mt-3 text-sm text-white/90">
+                  Une erreur est survenue. Réessaie dans un instant.
+                </p>
+              ) : null}
               </form>
             ) : (
               <div className="max-w-md mx-auto pt-4 bg-white/20 rounded-2xl p-6">
