@@ -12,26 +12,26 @@ export function MapExplorer() {
   ];
 
   const pins = [
-    { x: 35, y: 25, color: "#F37466", size: "large" },
-    { x: 55, y: 30, color: "#F37466", size: "medium" },
+    { x: 35, y: 25, color: "var(--vialy-coral)", size: "large" },
+    { x: 55, y: 30, color: "var(--vialy-coral)", size: "medium" },
     { x: 65, y: 35, color: "#6BCF7F", size: "large" },
-    { x: 40, y: 50, color: "#F89F8F", size: "small" },
-    { x: 50, y: 55, color: "#8CC6DC", size: "medium" },
+    { x: 40, y: 50, color: "var(--vialy-coral-light)", size: "small" },
+    { x: 50, y: 55, color: "var(--vialy-blue)", size: "medium" },
     { x: 32, y: 62, color: "#9D88E5", size: "large" },
     { x: 42, y: 68, color: "#9D88E5", size: "medium" },
     { x: 75, y: 65, color: "#6BCF7F", size: "large" },
-    { x: 30, y: 80, color: "#F37466", size: "medium" },
-    { x: 72, y: 85, color: "#F89F8F", size: "large" },
+    { x: 30, y: 80, color: "var(--vialy-coral)", size: "medium" },
+    { x: 72, y: 85, color: "var(--vialy-coral-light)", size: "large" },
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-orange-50/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl mb-4">
-            Explore ta ville avec une <span className="text-[#F37466]">carte interactive</span>
+          <h2 className="text-4xl lg:text-5xl mb-4 font-bold text-gray-900">
+            Explore ta ville avec une <span className="text-vialy-coral font-extrabold">carte interactive</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 font-medium max-w-2xl mx-auto">
             Découvre des lieux cachés, filtre par catégorie et crée ton propre parcours d'aventure
           </p>
         </div>
@@ -40,16 +40,16 @@ export function MapExplorer() {
           {/* Map Card */}
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
             {/* Filter Pills */}
-            <div className="p-6 bg-gradient-to-b from-white to-gray-50 border-b border-gray-100">
+            <div className="p-6 bg-gradient-to-b from-white to-orange-50/30 border-b border-gray-100">
               <div className="flex gap-3 flex-wrap justify-center">
                 {filters.map((filter) => (
                   <button
                     key={filter.id}
                     onClick={() => setActiveFilter(filter.id)}
-                    className={`flex items-center gap-2 px-5 py-3 rounded-full transition-all ${
+                    className={`flex items-center gap-2 px-5 py-3 rounded-full transition-all cursor-pointer hover:scale-105 active:scale-95 ${
                       activeFilter === filter.id
-                        ? "bg-gray-900 text-white shadow-lg"
-                        : "bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300"
+                        ? "bg-gray-900 text-white shadow-lg font-medium"
+                        : "bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300 font-medium"
                     }`}
                   >
                     <filter.icon className="w-4 h-4" />
@@ -116,27 +116,27 @@ export function MapExplorer() {
 
               {/* Legend Labels */}
               <div className="absolute top-4 left-4 bg-white rounded-2xl shadow-lg p-4 text-xs">
-                <div className="text-gray-500 mb-2">Paris, France</div>
-                <div className="text-gray-900">48 points d'intérêt</div>
+                <div className="text-gray-500 mb-2 font-medium">Paris, France</div>
+                <div className="text-gray-900 font-bold">48 points d'intérêt</div>
               </div>
             </div>
 
             {/* Bottom Info */}
-            <div className="p-6 bg-gradient-to-b from-gray-50 to-white">
+            <div className="p-6 bg-gradient-to-b from-orange-50/30 to-white">
               <div className="flex items-center justify-between max-w-3xl mx-auto">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-[#F37466] border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-vialy-coral border-2 border-white"></div>
                     <div className="w-8 h-8 rounded-full bg-[#6BCF7F] border-2 border-white"></div>
-                    <div className="w-8 h-8 rounded-full bg-[#8CC6DC] border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-vialy-blue border-2 border-white"></div>
                     <div className="w-8 h-8 rounded-full bg-[#9D88E5] border-2 border-white"></div>
-                    <div className="w-8 h-8 rounded-full bg-[#F89F8F] border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-vialy-coral-light border-2 border-white"></div>
                   </div>
-                  <div className="text-sm text-gray-600">
-                    <span className="text-gray-900">5 catégories</span> de découverte
+                  <div className="text-sm text-gray-600 font-medium">
+                    <span className="text-gray-900 font-bold">5 catégories</span> de découverte
                   </div>
                 </div>
-                <div className="px-4 py-2 bg-gradient-to-r from-[#8CC6DC] to-[#F37466] text-white rounded-xl text-sm">
+                <div className="px-4 py-2 bg-gradient-to-r from-vialy-blue to-vialy-coral text-white rounded-xl text-sm font-semibold shadow-md">
                   Nouvelle quête disponible 🎯
                 </div>
               </div>

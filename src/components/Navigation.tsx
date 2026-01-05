@@ -29,7 +29,7 @@ export function Navigation() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer">
+          <button onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform active:scale-95">
             <img 
               src={logoVialy} 
               alt="Vialy Logo" 
@@ -42,19 +42,19 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-8">
             <button 
               onClick={() => scrollToSection('fonctionnalites')} 
-              className="text-gray-700 hover:text-[#8CC6DC] transition-colors"
+              className="text-gray-700 hover:text-vialy-blue transition-colors cursor-pointer hover:scale-105 active:scale-95"
             >
               Fonctionnalités
             </button>
             <button 
               onClick={() => scrollToSection('parcours')} 
-              className="text-gray-700 hover:text-[#8CC6DC] transition-colors"
+              className="text-gray-700 hover:text-vialy-blue transition-colors cursor-pointer hover:scale-105 active:scale-95"
             >
               Parcours
             </button>
             <button 
               onClick={() => scrollToSection('communaute')} 
-              className="text-gray-700 hover:text-[#8CC6DC] transition-colors"
+              className="text-gray-700 hover:text-vialy-blue transition-colors cursor-pointer hover:scale-105 active:scale-95"
             >
               Communauté
             </button>
@@ -64,11 +64,11 @@ export function Navigation() {
           <div className="flex items-center gap-4">
             <Button 
               onClick={() => scrollToSection('download')}
-              className="bg-gradient-to-r from-[#8CC6DC] to-[#F37466] hover:opacity-90 text-white px-6 rounded-xl hidden md:inline-flex"
+              className="bg-gradient-to-r from-vialy-blue to-vialy-coral hover:opacity-90 text-white px-6 rounded-xl hidden md:inline-flex hover:scale-105 active:scale-95 transition-transform shadow-lg hover:shadow-xl"
             >
               Liste d'attente
             </Button>
-            <button className="md:hidden p-2">
+            <button className="md:hidden p-2 cursor-pointer hover:bg-gray-100 rounded-lg transition-colors">
               <Menu className="w-6 h-6" />
             </button>
           </div>

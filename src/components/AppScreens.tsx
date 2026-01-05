@@ -22,11 +22,11 @@ export function AppScreens() {
   ];
 
   return (
-    <section id="parcours" className="py-24 bg-white scroll-mt-20">
+    <section id="parcours" className="py-24 bg-orange-50/30 scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl mb-4">
-            Une expérience <span className="text-[#8CC6DC]">fluide</span> et <span className="text-[#F37466]">intuitive</span>
+            Une expérience <span className="text-vialy-blue">fluide</span> et <span className="text-vialy-coral">intuitive</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvre l'interface pensée pour rendre chaque promenade inoubliable

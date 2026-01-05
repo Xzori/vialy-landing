@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -44,10 +45,12 @@
   --sidebar-ring: oklch(0.708 0 0);
   
   /* Vialy Brand Colors */
-  --vialy-blue: #8CC6DC;
-  --vialy-coral: #F37466;
-  --vialy-blue-light: #B8DFE9;
+  --vialy-blue: #8CC5DB;
+  --vialy-coral: #F66F62;
+  --vialy-blue-light: #A8D5E6;
+  --vialy-blue-dark: #7AB5CB;
   --vialy-coral-light: #F89F8F;
+  --vialy-coral-dark: #E55F52;
 }
 
 .dark {
@@ -126,6 +129,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+  --color-vialy-blue: var(--vialy-blue);
+  --color-vialy-coral: var(--vialy-coral);
+  --color-vialy-blue-light: var(--vialy-blue-light);
+  --color-vialy-blue-dark: var(--vialy-blue-dark);
+  --color-vialy-coral-light: var(--vialy-coral-light);
+  --color-vialy-coral-dark: var(--vialy-coral-dark);
+
+  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
 }
 
 @layer base {
@@ -184,6 +196,7 @@
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
+      cursor: pointer;
     }
 
     input {
@@ -208,6 +221,21 @@ html {
   }
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
 }
