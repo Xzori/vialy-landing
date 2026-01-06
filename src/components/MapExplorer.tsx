@@ -1,5 +1,5 @@
 import { MapPin, Leaf, Building, Utensils, Palette } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export function MapExplorer() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -12,17 +12,22 @@ export function MapExplorer() {
   ];
 
   const pins = [
-    { x: 35, y: 25, color: "var(--vialy-coral)", size: "large" },
-    { x: 55, y: 30, color: "var(--vialy-coral)", size: "medium" },
-    { x: 65, y: 35, color: "#6BCF7F", size: "large" },
-    { x: 40, y: 50, color: "var(--vialy-coral-light)", size: "small" },
-    { x: 50, y: 55, color: "var(--vialy-blue)", size: "medium" },
-    { x: 32, y: 62, color: "#9D88E5", size: "large" },
-    { x: 42, y: 68, color: "#9D88E5", size: "medium" },
-    { x: 75, y: 65, color: "#6BCF7F", size: "large" },
-    { x: 30, y: 80, color: "var(--vialy-coral)", size: "medium" },
-    { x: 72, y: 85, color: "var(--vialy-coral-light)", size: "large" },
+    { x: 35, y: 25, color: "var(--vialy-coral)", size: "large", category: "culture" },
+    { x: 55, y: 30, color: "var(--vialy-coral)", size: "medium", category: "culture" },
+    { x: 65, y: 35, color: "#6BCF7F", size: "large", category: "nature" },
+    { x: 40, y: 50, color: "var(--vialy-coral-light)", size: "small", category: "food" },
+    { x: 50, y: 55, color: "var(--vialy-blue)", size: "medium", category: "culture" },
+    { x: 32, y: 62, color: "#9D88E5", size: "large", category: "food" },
+    { x: 42, y: 68, color: "#9D88E5", size: "medium", category: "food" },
+    { x: 75, y: 65, color: "#6BCF7F", size: "large", category: "nature" },
+    { x: 30, y: 80, color: "var(--vialy-coral)", size: "medium", category: "culture" },
+    { x: 72, y: 85, color: "var(--vialy-coral-light)", size: "large", category: "nature" },
   ];
+
+  const filteredPins = useMemo(() => {
+    if (activeFilter === "all") return pins;
+    return pins.filter(pin => pin.category === activeFilter);
+  }, [activeFilter]);
 
   return (
     <section className="py-24 bg-orange-50/20">
@@ -86,7 +91,7 @@ export function MapExplorer() {
               </svg>
 
               {/* Map Pins */}
-              {pins.map((pin, index) => {
+              {filteredPins.map((pin, index) => {
                 const sizes = {
                   small: "w-10 h-10",
                   medium: "w-12 h-12",
@@ -117,7 +122,14 @@ export function MapExplorer() {
               {/* Legend Labels */}
               <div className="absolute top-4 left-4 bg-white rounded-2xl shadow-lg p-4 text-xs">
                 <div className="text-gray-500 mb-2 font-medium">Paris, France</div>
-                <div className="text-gray-900 font-bold">48 points d'intérêt</div>
+                <div className="text-gray-900 font-bold">
+                  {filteredPins.length} point{filteredPins.length > 1 ? 's' : ''} d'intérêt
+                  {activeFilter !== "all" && (
+                    <span className="text-vialy-blue ml-1">
+                      ({filters.find(f => f.id === activeFilter)?.label})
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 

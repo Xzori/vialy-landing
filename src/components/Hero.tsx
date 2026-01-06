@@ -1,35 +1,9 @@
 import { Button } from "./ui/button";
 import { Download, Compass } from "lucide-react";
+import { scrollToSection } from "../hooks/useScrollToSection";
 import screenDiscover from "figma:asset/0dab7a4cc1d44b2e8a4b042c1629857e31ce7b7c.png";
 
 export function Hero() {
-  const scrollToDownload = () => {
-    const element = document.getElementById('download');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollToAbout = () => {
-    const element = document.getElementById('about');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-vialy-blue/10 via-white to-vialy-coral/5">
@@ -54,16 +28,16 @@ export function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                onClick={scrollToDownload}
+              <Button
+                onClick={() => scrollToSection('download')}
                 className="bg-vialy-coral hover:bg-vialy-coral/90 text-white px-8 py-6 rounded-2xl font-semibold"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Rejoindre la liste d'attente
               </Button>
-              <Button 
-                onClick={scrollToAbout}
-                variant="outline" 
+              <Button
+                onClick={() => scrollToSection('about')}
+                variant="outline"
                 className="border-2 border-vialy-blue text-vialy-blue hover:bg-vialy-blue/10 px-8 py-6 rounded-2xl bg-white font-semibold"
               >
                 <Compass className="mr-2 h-5 w-5" />

@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Instagram, Twitter, Facebook, Mail, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import { scrollToSection } from "../hooks/useScrollToSection";
 import logoVialy from "figma:asset/9ef533a049266054c006b97c7fbeb9dba0ba9d7c.png";
 
 export function CTAFooter() {
@@ -37,20 +38,6 @@ const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("
     setStatus("error");
   }
 };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <footer className="relative overflow-hidden">
