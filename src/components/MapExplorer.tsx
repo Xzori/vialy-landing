@@ -135,8 +135,8 @@ export function MapExplorer() {
 
             {/* Bottom Info */}
             <div className="p-6 bg-gradient-to-b from-orange-50/30 to-white">
-              <div className="flex items-center justify-between max-w-3xl mx-auto">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left max-w-3xl mx-auto">
+                <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
                   <div className="flex -space-x-2">
                     <div className="w-8 h-8 rounded-full bg-vialy-coral border-2 border-white"></div>
                     <div className="w-8 h-8 rounded-full bg-[#6BCF7F] border-2 border-white"></div>
@@ -148,7 +148,7 @@ export function MapExplorer() {
                     <span className="text-gray-900 font-bold">5 catégories</span> de découverte
                   </div>
                 </div>
-                <div className="px-4 py-2 bg-gradient-to-r from-vialy-blue to-vialy-coral text-white rounded-xl text-sm font-semibold shadow-md">
+                <div className="w-full sm:w-auto px-4 py-2 bg-gradient-to-r from-vialy-blue to-vialy-coral text-white rounded-xl text-sm font-semibold shadow-md text-center">
                   Nouvelle quête disponible 🎯
                 </div>
               </div>

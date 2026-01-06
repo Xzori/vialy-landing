@@ -47,7 +47,7 @@ export function Hero() {
         <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-purple-200/40 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "4s" }}></div>
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
+      <div className="container mx-auto px-6 pt-32 pb-20 lg:py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Text Content */}
           <motion.div
@@ -60,7 +60,7 @@ export function Hero() {
               <span className="text-vialy-blue font-semibold text-sm tracking-wide">✨ DÉCOUVREZ VOTRE VILLE AUTREMENT</span>
             </motion.div>
 
-            <h1 className="text-5xl lg:text-7xl tracking-tight font-bold text-gray-900 leading-[1.1] flex flex-wrap gap-x-3 justify-center lg:justify-start">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl tracking-tight font-bold text-gray-900 leading-[1.1] flex flex-wrap gap-x-2 sm:gap-x-3 justify-center lg:justify-start">
               {titleWords.map((word, i) => (
                 <motion.span
                   key={i}
@@ -102,17 +102,17 @@ export function Hero() {
               </MagneticButton>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex items-center gap-8 justify-center lg:justify-start pt-6">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6 sm:gap-8 justify-center lg:justify-start pt-6">
               <div>
                 <div className="text-3xl text-vialy-blue font-bold">50K+</div>
                 <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Utilisateurs</div>
               </div>
-              <div className="w-px h-12 bg-gray-200"></div>
+              <div className="hidden sm:block w-px h-12 bg-gray-200"></div>
               <div>
                 <div className="text-3xl text-vialy-coral font-bold">200+</div>
                 <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Parcours</div>
               </div>
-              <div className="w-px h-12 bg-gray-200"></div>
+              <div className="hidden sm:block w-px h-12 bg-gray-200"></div>
               <div>
                 <div className="text-3xl text-vialy-blue font-bold">4.8★</div>
                 <div className="text-sm text-gray-500 font-medium uppercase tracking-wide">Avis</div>
@@ -129,7 +129,7 @@ export function Hero() {
           >
             <div className="relative transform hover:scale-[1.02] transition-transform duration-500">
               {/* Phone Frame */}
-              <div className="relative w-[320px] h-[650px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl ring-1 ring-gray-900/5">
+              <div className="relative w-[260px] h-[520px] sm:w-[320px] sm:h-[650px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl ring-1 ring-gray-900/5">
                 <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative border-[4px] border-gray-900">
                   <img
                     src={screenDiscover}
@@ -142,7 +142,7 @@ export function Hero() {
 
               {/* Floating Elements */}
               <motion.div
-                className="absolute top-16 -right-12 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 z-20 border border-white/50"
+                className="absolute top-10 -right-6 sm:top-16 sm:-right-12 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 z-20 border border-white/50"
                 variants={floatVariants}
                 animate="animate"
               >
@@ -156,7 +156,7 @@ export function Hero() {
               </motion.div>
 
               <motion.div
-                className="absolute bottom-20 -left-12 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 z-20 border border-white/50"
+                className="absolute bottom-10 -left-6 sm:bottom-20 sm:-left-12 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 z-20 border border-white/50"
                 variants={floatVariants}
                 animate="animate"
                 transition={{ delay: 1 }}

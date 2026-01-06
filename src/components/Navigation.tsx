@@ -62,7 +62,7 @@ export function Navigation() {
                   <Menu className="w-6 h-6" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] bg-white">
+              <SheetContent side="right" className="w-[85vw] max-w-[280px] bg-white">
                 <SheetHeader className="border-b pb-4">
                   <SheetTitle className="flex items-center gap-3">
                     <img
