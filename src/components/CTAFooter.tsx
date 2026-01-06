@@ -1,14 +1,23 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Instagram, Twitter, Facebook, Mail, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { scrollToSection } from "../hooks/useScrollToSection";
 import logoVialy from "figma:asset/9ef533a049266054c006b97c7fbeb9dba0ba9d7c.png";
 
 export function CTAFooter() {
   const [email, setEmail] = useState("");
-const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [resetTimer, setResetTimer] = useState<number | null>(null);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (resetTimer) {
+        window.clearTimeout(resetTimer);
+      }
+    };
+  }, [resetTimer]);
 
  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();

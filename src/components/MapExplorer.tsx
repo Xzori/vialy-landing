@@ -1,32 +1,32 @@
-import { MapPin, Leaf, Building, Utensils, Palette } from "lucide-react";
+import { MapPin, Leaf, Utensils, Palette } from "lucide-react";
 import { useState, useMemo } from "react";
+
+const PINS = [
+  { x: 35, y: 25, color: "var(--vialy-coral)", size: "large", category: "culture" },
+  { x: 55, y: 30, color: "var(--vialy-coral)", size: "medium", category: "culture" },
+  { x: 65, y: 35, color: "#6BCF7F", size: "large", category: "nature" },
+  { x: 40, y: 50, color: "var(--vialy-coral-light)", size: "small", category: "food" },
+  { x: 50, y: 55, color: "var(--vialy-blue)", size: "medium", category: "culture" },
+  { x: 32, y: 62, color: "#9D88E5", size: "large", category: "food" },
+  { x: 42, y: 68, color: "#9D88E5", size: "medium", category: "food" },
+  { x: 75, y: 65, color: "#6BCF7F", size: "large", category: "nature" },
+  { x: 30, y: 80, color: "var(--vialy-coral)", size: "medium", category: "culture" },
+  { x: 72, y: 85, color: "var(--vialy-coral-light)", size: "large", category: "nature" },
+] as const;
+
+const FILTERS = [
+  { id: "all", label: "Tout", icon: MapPin },
+  { id: "culture", label: "Culture", icon: Palette },
+  { id: "nature", label: "Nature", icon: Leaf },
+  { id: "food", label: "Gastronomie", icon: Utensils },
+] as const;
 
 export function MapExplorer() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const filters = [
-    { id: "all", label: "Tout", icon: MapPin },
-    { id: "culture", label: "Culture", icon: Palette },
-    { id: "nature", label: "Nature", icon: Leaf },
-    { id: "food", label: "Gastronomie", icon: Utensils },
-  ];
-
-  const pins = [
-    { x: 35, y: 25, color: "var(--vialy-coral)", size: "large", category: "culture" },
-    { x: 55, y: 30, color: "var(--vialy-coral)", size: "medium", category: "culture" },
-    { x: 65, y: 35, color: "#6BCF7F", size: "large", category: "nature" },
-    { x: 40, y: 50, color: "var(--vialy-coral-light)", size: "small", category: "food" },
-    { x: 50, y: 55, color: "var(--vialy-blue)", size: "medium", category: "culture" },
-    { x: 32, y: 62, color: "#9D88E5", size: "large", category: "food" },
-    { x: 42, y: 68, color: "#9D88E5", size: "medium", category: "food" },
-    { x: 75, y: 65, color: "#6BCF7F", size: "large", category: "nature" },
-    { x: 30, y: 80, color: "var(--vialy-coral)", size: "medium", category: "culture" },
-    { x: 72, y: 85, color: "var(--vialy-coral-light)", size: "large", category: "nature" },
-  ];
-
   const filteredPins = useMemo(() => {
-    if (activeFilter === "all") return pins;
-    return pins.filter(pin => pin.category === activeFilter);
+    if (activeFilter === "all") return PINS;
+    return PINS.filter(pin => pin.category === activeFilter);
   }, [activeFilter]);
 
   return (
@@ -47,7 +47,7 @@ export function MapExplorer() {
             {/* Filter Pills */}
             <div className="p-6 bg-gradient-to-b from-white to-orange-50/30 border-b border-gray-100">
               <div className="flex gap-3 flex-wrap justify-center">
-                {filters.map((filter) => (
+                {FILTERS.map((filter) => (
                   <button
                     key={filter.id}
                     onClick={() => setActiveFilter(filter.id)}
@@ -126,7 +126,7 @@ export function MapExplorer() {
                   {filteredPins.length} point{filteredPins.length > 1 ? 's' : ''} d'intérêt
                   {activeFilter !== "all" && (
                     <span className="text-vialy-blue ml-1">
-                      ({filters.find(f => f.id === activeFilter)?.label})
+                      ({FILTERS.find(f => f.id === activeFilter)?.label})
                     </span>
                   )}
                 </div>

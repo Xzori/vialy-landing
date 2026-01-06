@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from "./ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import { Menu } from "lucide-react";
 import { scrollToSection, scrollToTop } from "../hooks/useScrollToSection";
 import logoVialy from "figma:asset/9ef533a049266054c006b97c7fbeb9dba0ba9d7c.png";
 
