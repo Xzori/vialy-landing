@@ -33,8 +33,8 @@ export function MapExplorer() {
     <section className="py-24 bg-orange-50/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl mb-4 font-bold text-gray-900">
-            Explore ta ville avec une <span className="text-vialy-coral font-extrabold">carte interactive</span>
+          <h2 className="text-4xl lg:text-5xl tracking-tight mb-4 font-bold text-gray-900">
+            Explore ta ville avec une <span className="text-vialy-coral">carte interactive</span>
           </h2>
           <p className="text-xl text-gray-700 font-medium max-w-2xl mx-auto">
             Découvre des lieux cachés, filtre par catégorie et crée ton propre parcours d'aventure

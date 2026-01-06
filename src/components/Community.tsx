@@ -22,8 +22,8 @@ export function Community() {
     <section id="communaute" className="py-24 bg-gradient-to-b from-orange-50/50 to-white scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl mb-4 font-bold text-gray-900">
-            Rejoins la <span className="text-vialy-coral font-extrabold">communauté</span> des explorateurs
+          <h2 className="text-4xl lg:text-5xl tracking-tight mb-4 font-bold text-gray-900">
+            Rejoins la <span className="text-vialy-coral">communauté</span> des explorateurs
           </h2>
           <p className="text-xl text-gray-700 font-medium max-w-2xl mx-auto">
             Partage tes découvertes, relève des défis et grimpe au classement
@@ -70,7 +70,7 @@ export function Community() {
                   🏆
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl mb-1 font-bold text-gray-900">Défi de la Semaine</h3>
+                  <h3 className="text-2xl lg:text-3xl mb-1 font-bold text-gray-900">Défi de la Semaine</h3>
                   <p className="text-sm text-gray-500 font-medium">Complétez 5 parcours urbains</p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export function Community() {
                   <Trophy className="w-6 h-6 text-vialy-coral" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Classement Global</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">Classement Global</h3>
                   <p className="text-sm text-gray-500 font-medium">Top explorateurs cette semaine</p>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export function Community() {
 
             {/* Badges Collection */}
             <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <h3 className="text-xl mb-6 uppercase tracking-wide font-bold text-gray-900">Collection de Badges</h3>
+              <h3 className="text-2xl lg:text-3xl mb-6 font-bold text-gray-900">Collection de Badges</h3>
               
               <div className="grid grid-cols-3 gap-4">
                 {badges.map((badge, index) => (

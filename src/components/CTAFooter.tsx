@@ -54,7 +54,7 @@ const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("
               <span className="text-white font-medium">🚀 Lancement imminent</span>
             </div>
             
-            <h2 className="text-4xl lg:text-6xl tracking-tight font-bold">
+            <h2 className="text-4xl lg:text-5xl tracking-tight font-bold">
               Sois parmi les premiers à explorer ta ville autrement
             </h2>
             
